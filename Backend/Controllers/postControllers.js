@@ -1,5 +1,14 @@
 const Post = require("../Models/postModel.js")
 
+exports.getAllPosts = async (req, res) => {
+  try {
+    const posts = await Post.find().populate("userId", "name").sort({ createdAt: -1 });
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 exports.createPost = async (req, res) => {
   try {
     const post = await Post.create({
@@ -11,16 +20,6 @@ exports.createPost = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-exports.getAllPosts = async (req, res) => {
-  try {
-    const posts = await Post.find().populate("userId", "name").sort({ createdAt: -1 });
-    res.status(200).json(posts);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 
 exports.updatePost = async (req, res) => {
   try {
