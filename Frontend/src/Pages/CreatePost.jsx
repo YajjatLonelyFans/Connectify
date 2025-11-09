@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "../Components/NavBar"; 
+import { motion } from "framer-motion";
+import { Send } from "lucide-react";
+import { ClipLoader } from "react-spinners";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -33,42 +36,96 @@ const CreatePost = () => {
 
   return (
     <>
-      <Navbar /> {/* ✅ Navbar at the top */}
+      <Navbar />
 
-      <div className="flex justify-center mt-20">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 pt-24 pb-12 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mx-auto"
         >
-          <h2 className="text-2xl font-bold mb-6 text-center">Create New Post</h2>
+          {/* Header */}
+          <div className="mb-8">
+            <motion.h1 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-4xl font-bold text-gray-900 mb-2"
+            >
+              Create New Post
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-600"
+            >
+              Share your thoughts with the community
+            </motion.p>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Post Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="border w-full p-2 rounded mb-4"
-          />
-
-          <textarea
-            placeholder="Write your content..."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className="border w-full p-2 rounded mb-4 h-40 resize-none"
-          ></textarea>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className={`w-full font-semibold px-4 py-2 rounded text-white ${
-              loading
-                ? "bg-blue-300 cursor-not-allowed"
-                : "bg-blue-500 hover:bg-blue-600"
-            }`}
+          {/* Post Creation Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-8 border border-white/20"
           >
-            {loading ? "Publishing..." : "Publish"}
-          </button>
-        </form>
+            <div className="space-y-6">
+              {/* Title Input */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Post Title
+                </label>
+                <input
+                  type="text"
+                  placeholder="Give your post an engaging title..."
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="w-full px-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-emerald-500 focus:outline-none transition-all duration-300 bg-gray-50 focus:bg-white text-lg font-medium"
+                  disabled={loading}
+                />
+              </div>
+
+              {/* Content Textarea */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Content
+                </label>
+                <textarea
+                  placeholder="Share your story, insights, or ideas..."
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  rows="10"
+                  className="w-full px-4 py-4 border-2 border-gray-200 rounded-2xl focus:border-emerald-500 focus:outline-none transition-all duration-300 bg-gray-50 focus:bg-white resize-none"
+                  disabled={loading}
+                />
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center space-x-4 pt-6">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleSubmit}
+                  disabled={loading || !title || !content}
+                  className="flex-1 flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <>
+                      <ClipLoader color="#ffffff" size={20} />
+                      <span>Publishing...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} />
+                      <span>Publish Post</span>
+                    </>
+                  )}
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </>
   );
