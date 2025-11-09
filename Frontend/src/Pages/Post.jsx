@@ -106,7 +106,8 @@ const Posts = () => {
                           </div>
                           <div>
                             <h3 className="font-semibold text-gray-900">{post.user?.name || "Unknown"}</h3>
-                            <p className="text-sm text-gray-500">Posted recently</p>
+                            <p className="text-sm text-gray-500">
+                            {post.createdAt ? new Date(post.createdAt).toLocaleDateString('en-US', {year: 'numeric',month: 'short',day: 'numeric'}) + ' at ' + new Date(post.createdAt).toLocaleTimeString('en-US', {hour: '2-digit',minute: '2-digit'}): 'Posted recently'}</p>
                           </div>
                         </div>
 
