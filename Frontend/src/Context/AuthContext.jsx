@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3000";
 
 
 const AuthContext = createContext();
@@ -29,7 +30,9 @@ export const AuthProvider = ({ children }) => {
         setUser(res.data.user);
       } catch (err) {
         console.error("Error fetching profile:", err);
-        logout(); 
+        localStorage.removeItem("token");
+        setUser(null);
+        setToken(null);
       } finally {
         setLoading(false);
       }
@@ -86,3 +89,4 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
+export default AuthProvider;

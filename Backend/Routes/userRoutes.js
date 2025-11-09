@@ -7,7 +7,7 @@ const { protect } = require("../Middleware/authMiddleWare.js");
 
 router.post("/signup", userController.registerUser);          
 router.post("/login", userController.loginUser);              
-router.get("/profile", userController.getProfile)
+router.get("/profile", protect, userController.getProfile)
 router.put("/edit", protect, userController.editUser);        
 
 module.exports = router;
