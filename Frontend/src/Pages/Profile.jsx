@@ -47,13 +47,13 @@ const Profile = () => {
         animate={{ opacity: 1, y: 0 }}
         className="max-w-2xl mx-auto"
       >
-        {/* Profile Card */}
+        
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden border border-white/20"
         >
-          {/* Header with Avatar */}
+          
           <div className="relative h-32 bg-gradient-to-r from-emerald-500 to-teal-600">
             <div className="absolute -bottom-16 left-8">
               <div className="relative">
@@ -72,7 +72,7 @@ const Profile = () => {
           </div>
 
           <div className="pt-20 px-8 pb-8">
-            {/* Message */}
+          
             <AnimatePresence>
               {message && (
                 <motion.div
@@ -86,7 +86,7 @@ const Profile = () => {
               )}
             </AnimatePresence>
 
-            {/* View Mode */}
+          
             {!isEditing ? (
               <motion.div
                 initial={{ opacity: 0 }}
@@ -133,7 +133,7 @@ const Profile = () => {
                 </div>
               </motion.div>
             ) : (
-              /* Edit Mode */
+            
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -152,7 +152,7 @@ const Profile = () => {
                 </div>
 
                 <div className="space-y-4">
-                  {/* Name Input */}
+                
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Full Name
@@ -171,7 +171,7 @@ const Profile = () => {
                     </div>
                   </div>
 
-                  {/* Email Input */}
+               
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Email Address
@@ -190,7 +190,7 @@ const Profile = () => {
                     </div>
                   </div>
 
-                  {/* Password Input */}
+                
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       New Password (optional)

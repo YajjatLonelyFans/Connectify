@@ -57,7 +57,7 @@ const Posts = () => {
       <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 pt-24 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ const Posts = () => {
             </Link>
           </motion.div>
 
-          {/* Posts Grid */}
+          
           <AnimatePresence>
             {posts.length === 0 ? (
               <motion.div
@@ -97,7 +97,7 @@ const Posts = () => {
                     transition={{ delay: index * 0.1 }}
                     className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-white/20"
                   >
-                    {/* Post Header */}
+                    
                     <div className="p-6 border-b border-gray-100">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center space-x-3">
@@ -157,7 +157,7 @@ const Posts = () => {
                       </div>
                     </div>
 
-                    {/* Post Content */}
+                    
                     <div className="p-6">
                       <h2 className="text-2xl font-bold text-gray-900 mb-3">{post.title}</h2>
                       <p className="text-gray-700 leading-relaxed">{post.content}</p>

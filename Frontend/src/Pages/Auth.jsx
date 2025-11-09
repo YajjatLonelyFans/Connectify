@@ -23,7 +23,7 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Background decoration */}
+     
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
@@ -36,7 +36,7 @@ const Auth = () => {
         transition={{ duration: 0.6 }}
         className="relative w-full max-w-md z-10"
       >
-        {/* Logo/Brand */}
+       
         <motion.div 
           className="text-center mb-8"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -52,7 +52,7 @@ const Auth = () => {
           <p className="text-gray-600 mt-2">Connect, Share, Inspire</p>
         </motion.div>
 
-        {/* Auth Card */}
+      
         <motion.div
           className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-8 border border-white/20"
           initial={{ opacity: 0, scale: 0.95 }}

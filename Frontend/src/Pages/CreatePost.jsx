@@ -44,7 +44,7 @@ const CreatePost = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto"
         >
-          {/* Header */}
+          
           <div className="mb-8">
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
@@ -63,7 +63,7 @@ const CreatePost = () => {
             </motion.p>
           </div>
 
-          {/* Post Creation Card */}
+          
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -71,7 +71,7 @@ const CreatePost = () => {
             className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-8 border border-white/20"
           >
             <div className="space-y-6">
-              {/* Title Input */}
+             
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Post Title
@@ -86,7 +86,7 @@ const CreatePost = () => {
                 />
               </div>
 
-              {/* Content Textarea */}
+            
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Content
@@ -101,7 +101,7 @@ const CreatePost = () => {
                 />
               </div>
 
-              {/* Action Buttons */}
+             
               <div className="flex items-center space-x-4 pt-6">
                 <motion.button
                   whileHover={{ scale: 1.02 }}

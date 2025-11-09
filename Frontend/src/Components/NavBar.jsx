@@ -22,7 +22,7 @@ const Navbar = () => {
       className="bg-white/80 backdrop-blur-lg shadow-lg fixed top-0 left-0 w-full z-50 border-b border-gray-100"
     >
       <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
-        {/* Logo */}
+        
         <Link
           to={isAuthenticated ? "/posts" : "/"}
           className="flex items-center space-x-2"
@@ -38,7 +38,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Create Post Button (Desktop) */}
+        
         {isAuthenticated && (
           <Link
             to="/create"
@@ -48,7 +48,7 @@ const Navbar = () => {
           </Link>
         )}
 
-        {/* User Menu */}
+        
         <div className="relative">
           <motion.button
             whileHover={{ scale: 1.05 }}
