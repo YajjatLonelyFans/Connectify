@@ -7,7 +7,7 @@ const postRoutes = require("./Routes/postRoutes.js")
 const cors = require("cors")
 dotenv.config()
 
-const cors = require("cors");
+
 
 app.use(cors({
   origin: [
