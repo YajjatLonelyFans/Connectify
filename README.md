@@ -81,12 +81,6 @@ The app will start at `http://localhost:5173`
 
 ---
 
-## 🌐 Deployment
-
-- **Frontend:** Hosted on [Vercel](https://vercel.com/)
-- **Backend:** Hosted on [Render](https://render.com/)
-
----
 
 ## 📸 Screenshots
 
