@@ -4,7 +4,7 @@ import Posts from "./Pages/Post.jsx";
 import CreatePost from "./Pages/CreatePost.jsx";
 import EditPost from "./Pages/EditPost.jsx";
 import Profile from "./Pages/Profile.jsx";
-import { useAuth } from "./context/AuthContext.jsx"; 
+import { useAuth } from "./Context/AuthContext.jsx"; 
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useAuth();   
