@@ -7,7 +7,17 @@ const postRoutes = require("./Routes/postRoutes.js")
 const cors = require("cors")
 dotenv.config()
 
-app.use(cors())
+const cors = require("cors");
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173",  
+    "https://connectify-frontend-three.vercel.app"  
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json())
 
 app.use("/api/users" , userRoutes)
