@@ -18,7 +18,7 @@ const Posts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get("/api/posts");
+        const res = await axios.get("/posts");
         setPosts(res.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -33,7 +33,7 @@ const Posts = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     try {
-      await axios.delete(`/api/posts/${id}`);
+      await axios.delete(`/posts/${id}`);
       setPosts(posts.filter((post) => post._id !== id));
       toast.success("Post deleted successfully");
     } catch (error) {
