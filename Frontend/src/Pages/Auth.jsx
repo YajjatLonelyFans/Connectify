@@ -1,6 +1,5 @@
 import { useAuth } from "../Context/AuthContext";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Lock, User, Sparkles } from "lucide-react";
 
@@ -18,7 +17,7 @@ const Auth = () => {
       ? await login(email, password)
       : await signup(name, email, password);
 
-    if (res.success) navigate("/posts");
+    if (res.success) window.location.href = "/posts";
     else alert(res.message);
   };
 
