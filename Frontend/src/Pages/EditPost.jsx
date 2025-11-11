@@ -18,7 +18,7 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(`/api/posts/${id}`);
+        const res = await axios.get(`/posts/${id}`);
         console.log("Fetched post data:", res.data);
         setTitle(res.data.title || "");
         setContent(res.data.content || "");
@@ -35,7 +35,7 @@ const EditPost = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      await axios.put(`/api/posts/${id}`, { title, content });
+      await axios.put(`/posts/${id}`, { title, content });
       setMessage("✅ Post updated successfully!");
       setTimeout(() => navigate("/posts"), 1000);
     } catch (err) {
@@ -50,7 +50,7 @@ const EditPost = () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     try {
       setLoading(true);
-      await axios.delete(`/api/posts/${id}`);
+      await axios.delete(`/posts/${id}`);
       navigate("/posts");
     } catch (err) {
       console.error("Error deleting post:", err);

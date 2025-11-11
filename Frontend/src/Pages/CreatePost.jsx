@@ -23,7 +23,7 @@ const CreatePost = () => {
 
     try {
       setLoading(true);
-      await axios.post("/api/posts", { title, content });
+      await axios.post("/posts", { title, content });
       toast.success("Post created successfully!");
       navigate("/posts");
     } catch (error) {
