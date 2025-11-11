@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://connectify-r0y3.onrender.com",
-  withCredentials: false, 
+  baseURL: "https://connectify-r0y3.onrender.com/api",
+  withCredentials: true,
 });
 
 api.interceptors.request.use((config) => {

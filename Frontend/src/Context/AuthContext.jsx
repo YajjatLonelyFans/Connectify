@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import api from "./Axios.jsx"; 
+import api from "./Axios.jsx";  // ✅ your configured Axios instance
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -7,12 +8,13 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [loading, setLoading] = useState(false);
 
+  // ✅ Fetch profile automatically when token exists
   useEffect(() => {
     const fetchUser = async () => {
       if (!token) return;
       try {
         setLoading(true);
-        const res = await api.get("/api/users/profile"); // ✅ use api
+        const res = await api.get("/users/profile");
         setUser(res.data.user);
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -26,38 +28,47 @@ export const AuthProvider = ({ children }) => {
     fetchUser();
   }, [token]);
 
+  // ✅ Signup
   const signup = async (name, email, password) => {
     try {
       setLoading(true);
-      const res = await api.post("/api/users/signup", { name, email, password }); // ✅ use api
+      const res = await api.post("/users/signup", { name, email, password });
       localStorage.setItem("token", res.data.token);
       setToken(res.data.token);
       setUser(res.data.user);
       return { success: true };
     } catch (error) {
       console.error("Signup failed:", error);
-      return { success: false, message: error.response?.data?.message || "Signup failed" };
+      return {
+        success: false,
+        message: error.response?.data?.message || "Signup failed",
+      };
     } finally {
       setLoading(false);
     }
   };
 
+  // ✅ Login
   const login = async (email, password) => {
     try {
       setLoading(true);
-      const res = await api.post("/api/users/login", { email, password }); // ✅ use api
+      const res = await api.post("/users/login", { email, password });
       localStorage.setItem("token", res.data.token);
       setToken(res.data.token);
       setUser(res.data.user);
       return { success: true };
     } catch (error) {
       console.error("Login failed:", error);
-      return { success: false, message: error.response?.data?.message || "Login failed" };
+      return {
+        success: false,
+        message: error.response?.data?.message || "Login failed",
+      };
     } finally {
       setLoading(false);
     }
   };
 
+  // ✅ Logout
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
