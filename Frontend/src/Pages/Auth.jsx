@@ -17,7 +17,7 @@ const Auth = () => {
       ? await login(email, password)
       : await signup(name, email, password);
 
-    if (res.success) window.location.href = "/posts";
+    if (res.success) window.location.href = "/api/posts";
     else alert(res.message);
   };
 
