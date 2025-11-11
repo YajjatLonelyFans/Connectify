@@ -27,7 +27,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await axios.put("/users/edit", formData, {
+      const res = await axios.put("/api/users/edit", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessage("✅ Profile updated successfully!");
