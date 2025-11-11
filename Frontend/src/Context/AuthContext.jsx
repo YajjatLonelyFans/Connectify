@@ -1,32 +1,18 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
-axios.defaults.baseURL = "https://connectify-r0y3.onrender.com";
-
-
+import api from "./Axios.jsx"; 
 const AuthContext = createContext();
-
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [loading, setLoading] = useState(false);
 
-
-  useEffect(() => {
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    } else {
-      delete axios.defaults.headers.common["Authorization"];
-    }
-  }, [token]);
-
-  
   useEffect(() => {
     const fetchUser = async () => {
       if (!token) return;
       try {
         setLoading(true);
-        const res = await axios.get("/api/users/profile");
+        const res = await api.get("/api/users/profile"); // ✅ use api
         setUser(res.data.user);
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -40,11 +26,10 @@ export const AuthProvider = ({ children }) => {
     fetchUser();
   }, [token]);
 
-
   const signup = async (name, email, password) => {
     try {
       setLoading(true);
-      const res = await axios.post("/api/users/signup", { name, email, password });
+      const res = await api.post("/api/users/signup", { name, email, password }); // ✅ use api
       localStorage.setItem("token", res.data.token);
       setToken(res.data.token);
       setUser(res.data.user);
@@ -57,11 +42,10 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-
   const login = async (email, password) => {
     try {
       setLoading(true);
-      const res = await axios.post("/api/users/login", { email, password });
+      const res = await api.post("/api/users/login", { email, password }); // ✅ use api
       localStorage.setItem("token", res.data.token);
       setToken(res.data.token);
       setUser(res.data.user);
@@ -74,7 +58,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
@@ -82,7 +65,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{user,token,loading,signup,login,logout,isAuthenticated: !!token,}}>
+    <AuthContext.Provider
+      value={{
+        user,
+        token,
+        loading,
+        signup,
+        login,
+        logout,
+        isAuthenticated: !!token,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
