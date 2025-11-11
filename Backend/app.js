@@ -10,10 +10,7 @@ dotenv.config()
 
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",  
-    "https://connectify-frontend-three.vercel.app"  
-  ],
+  origin: ["https://connectify-frontend-three.vercel.app/"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
